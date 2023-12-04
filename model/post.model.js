@@ -5,7 +5,7 @@ const contactSchema=mongoose.Schema({
     email :String,
     phone : String,
     label : String,
-    booked_slots : [String]
+
 },{
 
     versionKey:false

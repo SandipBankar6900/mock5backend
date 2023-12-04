@@ -6,10 +6,10 @@ const contactRouter=express.Router();
 
 
 contactRouter.post("/create",async(req,res)=>{
-    const { }=req.body
+    const {name,email,phone,label}=req.body
 
     try {
-        const contact=new ContactModel(req.body);
+        const contact=new ContactModel({name,email,phone,label});
         await contact.save();
         res.status(200).send({"msg":"A new contact has been added"})
         
