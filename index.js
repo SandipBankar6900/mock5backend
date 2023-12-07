@@ -1,29 +1,19 @@
-const express=require("express");
-const cors=require("cors");
-// require("dotenv").config();
-const{connection}=require("./db");
-const {contactRouter}=require("./routes/post.routes")
+const express = require("express");
+const { connection } = require("./db");
+const { userRouter } = require("./route/userRoute");
+const cors = require("cors")
+const app = express();
 
-
-
-const app=express();
-
+app.use(express.json());
 app.use(cors());
 
-app.use("/contacts",contactRouter)
+app.use("/contacts" , userRouter)
 
-
-
-
-
-
-app.listen(8080,async()=>{
+app.listen(8080 , async()=>{
     try {
         await connection;
-        console.log("server is connected to DB")
         console.log("server is running at port 8080")
-        
     } catch (error) {
-        console.log("error")
+        console.log(error)
     }
 })
